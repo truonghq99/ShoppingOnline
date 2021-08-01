@@ -2,7 +2,9 @@ package com.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -35,21 +37,21 @@ public class Item implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int id;
+    private int id;
     @Column(name = "title")
-    protected String title;
+    private String title;
     @Column(name = "type", insertable = false, updatable = false)
-    protected String type;
+    private String type;
     @Column(name = "price")
-    protected float price;
+    private float price;
     @Column(name="sale_price")
-    protected float salePrice;
+    private float salePrice;
     @Column(name = "mfgDate")
-    protected Date mfgDate;
-    protected boolean active=false;
+    private Date mfgDate;
+    private boolean active=false;
 
-    @OneToMany(mappedBy="item",cascade = CascadeType.ALL)
-    private Collection<ImportItem> importItem;
+    @OneToMany(mappedBy="item")
+    private List<ImportItem> importItem=new ArrayList<>();
 
     @OneToMany(mappedBy="item", cascade = CascadeType.ALL)
     private Collection<StoreItem> storeItem;

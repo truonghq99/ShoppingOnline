@@ -50,7 +50,7 @@
                 <tr class="for" th:each="importItem, stat : *{listImportItem}">
 
                     <td>
-                        <a th:text="${importItem.item.id}" th:field="*{listImportItem[__${stat.index}__].item}"></a>
+                        <a th:text="${importItem.item.id}" th:field="*{listImportItem[__${stat.index}__].item.id}"></a>
                     </td>
                     <td>
                         <a th:text="${importItem.item.title}"></a>
