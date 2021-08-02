@@ -6,7 +6,7 @@
     <html xmlns:th="http://www.thymeleaf.org">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/background.css">
+    <link rel="stylesheet" th:href="@{/css/background.css}">
     <title>Create new Item</title>
 </head>
 
@@ -18,9 +18,8 @@
         <input type="text" th:field="*{title}" placeholder="Title" />
         <input type="text" th:field="*{author}" placeholder="Author" />
         <input type="text" th:field="*{category}" placeholder="Category" />
-        <input type="text" th:field="*{publisher}" placeholder="Publisher" />
+        <input type="text" th:fsield="*{publisher}" placeholder="Publisher" />
         <input type="text" th:field="*{price}" placeholder="Price" />
-        <input type="text" th:field="*{salePrice}" placeholder="Sale Price" />
         <input type="date" th:field="*{mfgDate}" placeholder="MfgDate" />
         <input type="file" name="fileImage" id="fileImage" />
         <button type="submit" value="Submit">Create new book</button>
@@ -29,10 +28,10 @@
         <input type="text" th:field="*{title}" placeholder="Title" />
         <input type="text" th:field="*{typeOfClothes}" placeholder="Type" />
         <input type="text" th:field="*{size}" placeholder="Size" />
+        <input type="text" th:field="*{material}" placeholder="Material" />
         <input type="text" th:field="*{price}" placeholder="Price" />
-        <input type="text" th:field="*{mfgDate}" placeholder="MfgDate" />
-        <input type="date" th:field="*{material}" placeholder="Material" />
-        <button type="submit" value="Submit">Create new clothes</button>
+        <input type="date" th:field="*{mfgDate}" placeholder="MfgDate" />
+        <button type="submit" value="Submit">Create new cslothes</button>
     </form>
     <form id="msform" th:action="@{/saveElectronics}" method="post" th:object="${electronics}">
         <input type="text" th:field="*{title}" placeholder="Title" />

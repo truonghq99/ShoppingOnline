@@ -39,7 +39,7 @@ public class ItemController{
     @Autowired
     private ElectronicsService electronicsService;
 
-    @GetMapping("/createItem")
+    @GetMapping("/inventory/createItem")
     public String showCreateItem(Model model, Book book, Clothes clothes, Electronics electronics){
         book = new Book();
         electronics = new Electronics();

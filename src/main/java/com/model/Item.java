@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -50,9 +51,10 @@ public class Item implements Serializable {
     private Date mfgDate;
     private boolean active=false;
 
-    @OneToMany(mappedBy="item")
-    private List<ImportItem> importItem=new ArrayList<>();
 
+    @OneToOne(mappedBy="item")
+    private ImportItem importedItem;
+    
     @OneToMany(mappedBy="item", cascade = CascadeType.ALL)
     private Collection<StoreItem> storeItem;
 

@@ -1,4 +1,5 @@
 var lap = document.getElementsByClassName("for");
+const id = document.querySelector(".id");
 
 for (let i = 1; i <= lap.length; i++) {
     const quantity = "quantity" + i;

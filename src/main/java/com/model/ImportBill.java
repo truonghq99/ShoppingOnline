@@ -41,5 +41,4 @@ public class ImportBill implements Serializable{
 
     @OneToMany(mappedBy="importBill",cascade = CascadeType.ALL)
     private List<ImportItem> listImportItem=new ArrayList<>();
-
 }
