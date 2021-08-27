@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <html xmlns:th="http://www.thymeleaf.org">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <title>Admin site</title>
+</head>
+
+<body>
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h2>
+                <span class="las la-accusoft">
+                </span><span>L2Global</span>
+            </h2>
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="/inventory">
+                        <span class="las la-igloo"></span>
+                        <span>Item</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/inventory/stores" class="active">
+                        <span class="las la-users"></span>
+                        <span>Store</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/inventory/export-bill">
+                        <span class="las la-file-export"></span>
+                        <span>Export to store</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+            <h2>
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label> Inventory Store Number
+                <a th:text="${store.id}"></a>
+
+            </h2>
+
+            <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input type="search" placeholder="Search here" />
+            </div>
+            <div class="user-wrapper">
+                <img src="image/2.jpg" width="40px" height="40px" alt="" />
+                <div>
+                    <h4>Truong Ho</h4>
+                    <small>Super Admin</small>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="projects">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>List Item</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table style="background: #00BFFF">
+                                <tr>
+                                    <td>ID</td>
+                                    <td>Title</td>
+                                    <td>Type of Item</td>
+                                    <td>Price of Item</td>
+                                    <td>MFG Date</td>
+                                    <td>Quantity</td>
+                                    <td>Active</td>
+                                    <td>Option</td>
+                                </tr>
+
+                                <tr class="for" th:each="item,stat : ${store.storeItem}">
+
+                                    <td>
+                                        <a th:text="${store.storeItem[__${stat.index}__].item.id}"></a>
+                                    </td>
+                                    <td>
+                                        <a th:text="${store.storeItem[__${stat.index}__].item.title}"></a>
+                                    </td>
+                                    <td>
+                                        <a th:text="${store.storeItem[__${stat.index}__].item.type}"></a>
+                                    </td>
+                                    <td>
+                                        <a th:text="${store.storeItem[__${stat.index}__].item.price}"></a>
+                                    </td>
+                                    <td>
+                                        <a th:text="${store.storeItem[__${stat.index}__].item.mfgDate}"></a>
+                                    </td>
+                                    <td>
+                                        <a th:text="*{item.quantity}"></a>
+                                    </td>
+                                    <td>
+                                        <span class="status" th:classappend="*{item.active}"></span>
+                                        <a th:text="*{item.active}"></a>
+                                    </td>
+                                    <td>
+                                        <form th:action="@{'/changeActive/true/'+${store.storeItem[__${stat.index}__].item.id}}" method="post">
+                                            <button type="submit" style="background:greenyellow; color:black" class="button">Turn on</button>
+                                        </form>
+                                        <form th:action="@{'/changeActive/false/'+${store.storeItem[__${stat.index}__].item.id}}" method="post">
+                                            <button type="submit" style="background:red; color:black" class="button">Turn off</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+        </main>
+        </div>
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+<script type="text/javascript " th:src="@{/js/exportbill.js}"></script>
+
+</html>

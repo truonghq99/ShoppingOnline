@@ -3,7 +3,6 @@ package com.model;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,7 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -43,6 +41,7 @@ public class Item implements Serializable {
     protected String title;
     @Column(name = "type", insertable = false, updatable = false)
     protected String type;
+    private String brand;
     @Column(name = "price")
     protected float price;
 
@@ -52,12 +51,16 @@ public class Item implements Serializable {
     protected Date mfgDate;
     protected boolean active=false;
 
-    @OneToOne(mappedBy="item", cascade = CascadeType.MERGE)
-    private ImportItem importItem;
+    @OneToMany(mappedBy="item", cascade = CascadeType.MERGE)
+    private List<ImportItem> importItem = new ArrayList<>();
     
-    @OneToMany(mappedBy="item", cascade = CascadeType.ALL)
-    private List<ExportItem> storeItem = new ArrayList<>();
+    @OneToMany(mappedBy="item", cascade = CascadeType.MERGE)
+    private List<StoreItem> storeItem = new ArrayList<>();
 
     @Transient
-	private MultipartFile bookImage;
+    private Book book;
+    @Transient
+    private Clothes clothes;
+    @Transient
+    private Electronics electronics;
 }

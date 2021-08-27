@@ -142,7 +142,7 @@
                                                 <span th:text="*{item.active}"></span>
                                             </td>
                                             <td>
-                                                <a class="button" th:href="@{'/inventory/list-item/details/'+*{item.id}}">Details</a>
+                                                <a class="button" th:href="@{'/inventory/list-item/details/'+*{item.type}+'/'+*{item.id}}">Details</a>
                                             </td>
                                     </tbody>
                                 </table>

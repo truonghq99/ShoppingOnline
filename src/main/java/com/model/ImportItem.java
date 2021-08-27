@@ -22,7 +22,7 @@ public class ImportItem{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne(cascade=CascadeType.MERGE)
+    @ManyToOne(cascade=CascadeType.MERGE)
     @JoinColumn(name="item_id")
     private Item item;
 

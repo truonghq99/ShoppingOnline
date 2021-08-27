@@ -35,6 +35,12 @@
                         <span>Store</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/inventory/export-bill">
+                        <span class="las la-file-export"></span>
+                        <span>Export to store</span>
+                    </a>
+                </li>
 
             </ul>
         </div>
@@ -108,7 +114,6 @@
                                                 <td>Address</td>
                                                 <td>Sales</td>
                                                 <td>Status</td>
-                                                <td>Details</td>
                                                 <td>Inventory</td>
                                             </tr>
                                         </thead>
@@ -127,14 +132,11 @@
                                                     <span th:text="${store.id}"></span>
                                                 </td>
                                                 <td>
-                                                    <span class="status orange"></span>
+                                                    <span class="status" th:classappend="${store.status}"></span>
                                                     <span th:text="${store.status}"></span>
                                                 </td>
                                                 <td>
-                                                    <a class="button" th:href="@{'/inventory/stores/details/'+${store.id}}">Details</a>
-                                                </td>
-                                                <td>
-                                                    <a class="button" th:href="@{'/inventory/stores/inventory/'+${store.id}}">Inventory</a>
+                                                    <a class="button" th:href="@{'/inventory/stores/details/'+${store.id}}">Inventory</a>
                                                 </td>
                                             </tr>
                                         </tbody>

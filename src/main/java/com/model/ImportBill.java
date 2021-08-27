@@ -15,8 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,22 +23,22 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImportBill implements Serializable{
+public class ImportBill implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="id_bill", unique=true)
+    @Column(name = "id_bill", unique = true)
     private String idBill;
 
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="supplier_id",referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "supplier_id", referencedColumnName = "id")
     private Supplier supplier;
     private Date date;
     private float price;
     private float discount;
     private float totalPrice;
 
-    @OneToMany(mappedBy="importBill",cascade = CascadeType.ALL)
-    private List<ImportItem> listImportItem=new ArrayList<>();
+    @OneToMany(mappedBy = "importBill", cascade = CascadeType.ALL)
+    private List<ImportItem> listImportItem = new ArrayList<>();
 }

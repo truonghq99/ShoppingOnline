@@ -10,10 +10,6 @@ import lombok.Data;
 @Entity
 @DiscriminatorValue("clothes")
 public class Clothes extends Item{
-    @Column(name="brand_of_clothes")
-    private String brandOfClothes;
-    @Column(name="type_of_clothes")
-    private String typeOfClothes;
     @Column(name="size")
     private String size;
     @Column(name="material")

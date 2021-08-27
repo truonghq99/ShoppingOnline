@@ -26,7 +26,7 @@
     </form>
     <form id="msform" th:action="@{/saveClothes}" method="post" th:object="${clothes}">
         <input type="text" th:field="*{title}" placeholder="Title" />
-        <input type="text" th:field="*{typeOfClothes}" placeholder="Type" />
+        <input type="text" th:field="*{brand}" placeholder="Type" />
         <input type="text" th:field="*{size}" placeholder="Size" />
         <input type="text" th:field="*{material}" placeholder="Material" />
         <input type="text" th:field="*{price}" placeholder="Price" />
@@ -35,8 +35,7 @@
     </form>
     <form id="msform" th:action="@{/saveElectronics}" method="post" th:object="${electronics}">
         <input type="text" th:field="*{title}" placeholder="Title" />
-        <input type="text" th:field="*{brandOfElectronics}" placeholder="Brand" />
-        <input type="text" th:field="*{typeOfElectronics}" placeholder="Type" />
+        <input type="text" th:field="*{brand}" placeholder="Brand" />
         <input type="text" th:field="*{version}" placeholder="Version" />
         <input type="text" th:field="*{price}" placeholder="Price" />
         <input type="date" th:field="*{mfgDate}" placeholder="MfgDate" />
